@@ -1,4 +1,4 @@
-module github.com/margarote/service_quiz_v2/pkg/study_sdk
+module github.com/teraquiz/study_sdk
 
 go 1.21
 
