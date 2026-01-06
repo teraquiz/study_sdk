@@ -36,3 +36,46 @@ type FlashcardFilter struct {
 	Enabled    *bool
 	Tags       []string
 }
+
+type Category struct {
+	ID             primitive.ObjectID `bson:"_id,omitempty"`
+	Name           string             `bson:"name"`
+	Description    string             `bson:"description"`
+	Type           string             `bson:"type"`
+	Icon           string             `bson:"icon,omitempty"`
+	Color          string             `bson:"color,omitempty"`
+	ParentID       string             `bson:"parent_id,omitempty"`
+	TotalQuestions int                `bson:"total_questions"`
+	Enabled        bool               `bson:"enabled"`
+	CreatedAt      time.Time          `bson:"created_at"`
+	UpdatedAt      time.Time          `bson:"updated_at"`
+}
+
+type CategoryFilter struct {
+	Type      *string
+	Enabled   *bool
+	ProductID *string
+}
+
+type ProductFilter struct {
+	Type    *string
+	Enabled *bool
+}
+
+type Product struct {
+	ID          primitive.ObjectID `bson:"_id,omitempty"`
+	Name        string             `bson:"name"`
+	Description string             `bson:"description"`
+	AreaIDs     []int              `bson:"area_ids"`
+	Metadata    ProductMetadata    `bson:"metadata"`
+	Enabled     bool               `bson:"enabled"`
+	CreatedAt   time.Time          `bson:"created_at"`
+	UpdatedAt   time.Time          `bson:"updated_at"`
+}
+
+type ProductMetadata struct {
+	Type            string   `bson:"type"`
+	TotalQuestions  int      `bson:"total_questions"`
+	TotalCategories int      `bson:"total_categories"`
+	Languages       []string `bson:"languages"`
+}
